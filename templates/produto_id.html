@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Detalhes do Produto</title>
-  
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,14 +13,12 @@
       padding: 20px;
       background-color: #f4f4f4;
     }
-
     header {
       background: #0b0b0b;
       color: #fff;
       padding: 10px 0;
       text-align: center;
     }
-
     main {
       background: #fff;
       padding: 20px;
@@ -29,12 +27,10 @@
       max-width: 600px;
       margin: 20px auto;
     }
-
     .detalhes p {
       margin: 10px 0;
       line-height: 1.6;
     }
-
     button {
       background-color: #dc3545;
       color: white;
@@ -43,18 +39,21 @@
       cursor: pointer;
       border-radius: 5px;
     }
-
     button:hover {
       background-color: #c82333;
     }
-
+    .update-button {
+      background-color: #007BFF;
+    }
+    .update-button:hover {
+      background-color: #0056b3;
+    }
     a {
       display: inline-block;
       margin-top: 20px;
       color: #007BFF;
       text-decoration: none;
     }
-
     a:hover {
       text-decoration: underline;
     }
@@ -74,10 +73,17 @@
       <p><strong>Estoque:</strong> {{ produto.estoque }}</p>
     </section>
 
-    <form id="delete-form" action="{{ url_for('produtos.deletar_produto', id_produto=produto.id) }}" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
+    <!-- botão de excluir -->
+    <form action="{{ url_for('produtos.deletar_produto', id_produto=produto.id) }}" method="POST">
       <button type="submit">Excluir Produto</button>
     </form>
+   
+  
+
+    <!-- Botão para atualizar produto -->
+    <a href="{{ url_for('produtos.exibir_formulario_atualizar_produto', id_produto=produto.id) }}">
+      <button class="update-button">Atualizar Produto</button>
+    </a>
 
     <a href="{{ url_for('produtos.obter_produtos') }}">Voltar para a lista de produtos</a>
   </main>
