@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +16,8 @@
             background: rgb(12, 106, 173);
             color: #f4f4f4;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px;
+            font-size: 1.5rem;
         }
         main {
             background: #fff;
@@ -28,6 +30,7 @@
         label {
             display: block;
             margin: 10px 0 5px;
+            font-weight: bold;
         }
         input, button {
             width: 100%;
@@ -41,18 +44,35 @@
             background-color: rgb(12, 106, 173);
             color: white;
             cursor: pointer;
+            font-size: 1rem;
+            border: none;
         }
         button:hover {
             background-color: rgb(10, 90, 150);
         }
+        .cancel-link {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            color: rgb(12, 106, 173);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+        .cancel-link:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Atualizar Produto</h1>
     </header>
+    
     <main>
         <form action="{{ url_for('produtos.atualizar_produto_por_id', id_produto=produto.id) }}" method="POST">
+            <input type="hidden" name="_method" value="PUT">  <!-- Simula método PUT -->
+
             <label for="nome">Nome do Produto:</label>
             <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required>
 
@@ -62,8 +82,11 @@
             <label for="estoque">Estoque:</label>
             <input type="number" id="estoque" name="estoque" value="{{ produto.estoque }}" required>
 
-            <button type="submit">Atualizar Produto</button>
+            <button type="submit">Salvar Alterações</button>
         </form>
+
+        <a href="{{ url_for('produtos.exibir_detalhes_produto', id_produto=produto.id) }}" class="cancel-link">Cancelar e voltar</a>
     </main>
 </body>
+
 </html>
