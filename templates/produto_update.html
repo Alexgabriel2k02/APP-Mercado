@@ -5,73 +5,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atualizar Produto</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 240 10% 3.9%;
+            --primary: 210 100% 50%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 240 4.8% 95.9%;
+            --secondary-foreground: 240 5.9% 10%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%;
+            --border: 240 5.9% 90%;
+            --radius: 12px;
+        }
+
+        * {
             margin: 0;
-            padding: 20px;
-        }
-        header {
-            background: rgb(12, 106, 173);
-            color: #f4f4f4;
-            text-align: center;
-            padding: 15px;
-            font-size: 1.5rem;
-        }
-        main {
-            background: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        label {
-            display: block;
-            margin: 10px 0 5px;
-            font-weight: bold;
-        }
-        input, button {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+            padding: 0;
             box-sizing: border-box;
         }
-        button {
-            background-color: rgb(12, 106, 173);
-            color: white;
-            cursor: pointer;
-            font-size: 1rem;
-            border: none;
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: hsl(var(--foreground));
+            background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2));
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
-        button:hover {
-            background-color: rgb(10, 90, 150);
-        }
-        .cancel-link {
-            display: block;
+
+        header {
             text-align: center;
-            margin-top: 15px;
-            color: rgb(12, 106, 173);
-            text-decoration: none;
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            width: 100%;
+        }
+
+        .text-primary {
+            color: hsl(var(--primary));
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 500px;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid hsl(var(--border));
+            border-radius: var(--radius);
+            box-sizing: border-box;
             font-size: 1rem;
         }
-        .cancel-link:hover {
-            text-decoration: underline;
+
+        .btn {
+            display: inline-block;
+            text-align: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-primary {
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+        }
+
+        .btn-primary:hover {
+            background-color: hsla(var(--primary) / 0.9);
+        }
+
+        .btn-secondary {
+            background-color: hsl(var(--muted));
+            color: hsl(var(--foreground));
+        }
+
+        .btn-secondary:hover {
+            background-color: hsla(var(--muted) / 0.8);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
         }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Atualizar Produto</h1>
+        <h1><span class="text-primary">MERCADO</span> ONCLICK</h1>
     </header>
-    
-    <main>
+
+    <main class="container">
+        <h2>Atualizar Produto</h2>
+
         <form action="{{ url_for('produtos.atualizar_produto_por_id', id_produto=produto.id) }}" method="POST">
-            <input type="hidden" name="_method" value="PUT">  <!-- Simula método PUT -->
+            <input type="hidden" name="_method" value="PUT"> <!-- Simula método PUT -->
 
             <label for="nome">Nome do Produto:</label>
             <input type="text" id="nome" name="nome" value="{{ produto.nome }}" required>
@@ -82,11 +137,15 @@
             <label for="estoque">Estoque:</label>
             <input type="number" id="estoque" name="estoque" value="{{ produto.estoque }}" required>
 
-            <button type="submit">Salvar Alterações</button>
+            <button type="submit" class="btn btn-primary">Salvar Alterações</button>
         </form>
 
-        <a href="{{ url_for('produtos.exibir_detalhes_produto', id_produto=produto.id) }}" class="cancel-link">Cancelar e voltar</a>
+        <a href="{{ url_for('produtos.exibir_detalhes_produto', id_produto=produto.id) }}" class="btn btn-secondary">Cancelar e voltar</a>
     </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> MERCADO ONCLICK</p>
+    </footer>
 </body>
 
 </html>
