@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Mercado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .content {
+            text-align: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .content h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .content a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .content a:hover {
+            background-color: #0056b3;
+        }
+        footer {
+            background-color: #007BFF;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sistema de Gerenciamento de Mercado</h1>
+    </header>
+    <div class="container">
+        <div class="content">
+            <h1>Bem-vindo ao Sistema de Mercado</h1>
+            <a href="{{ url_for('produtos.obter_produtos') }}">Gerenciar Produtos</a>
+            <a href="{{ url_for('clientes.obter_clientes') }}">Gerenciar Clientes</a>
+            <a href="{{ url_for('pedidos.get_pedidos_html') }}">Gerenciar Pedidos</a>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Sistema de Mercado. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
