@@ -4,74 +4,127 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Mercado</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f2f5;
+        :root {
+            --background: 0 0% 100%;
+            --foreground: 240 10% 3.9%;
+            --primary: 210 100% 50%;
+            --primary-foreground: 0 0% 98%;
+            --secondary: 240 4.8% 95.9%;
+            --secondary-foreground: 240 5.9% 10%;
+            --muted: 240 4.8% 95.9%;
+            --muted-foreground: 240 3.8% 46.1%;
+            --border: 240 5.9% 90%;
+            --radius: 12px;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: hsl(var(--foreground));
+            background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2));
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
-        .container {
-            flex: 1;
-            display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            padding: 2rem;
         }
-        .content {
+
+        header {
             text-align: center;
-            background: #fff;
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            width: 100%;
         }
-        .content h1 {
-            color: #333;
-            margin-bottom: 20px;
+
+        .text-primary {
+            color: hsl(var(--primary));
+            font-weight: 700;
         }
-        .content a {
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: hsl(var(--foreground));
+            margin-bottom: 0.5rem;
+        }
+
+        input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            border: 2px solid hsl(var(--border));
+            border-radius: var(--radius);
+            background-color: hsl(var(--muted));
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: hsl(var(--primary));
+            box-shadow: 0 0 5px hsla(var(--primary) / 0.3);
+        }
+
+        .btn-primary {
             display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #007BFF;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .content a:hover {
-            background-color: #0056b3;
-        }
-        footer {
-            background-color: #007BFF;
-            color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 0.75rem 1.5rem;
+            background-color: hsl(var(--primary));
+            color: hsl(var(--primary-foreground));
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            width: 100%;
+            cursor: pointer;
+            border: none;
+            margin-top: 1rem;
+        }
+
+        .btn-primary:hover {
+            background-color: hsla(var(--primary) / 0.9);
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted-foreground));
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Sistema de Gerenciamento de Mercado</h1>
+        <h1><span class="text-primary">MERCADO</span> ONCLICK</h1>
     </header>
+
     <div class="container">
-        <div class="content">
-            <h1>Bem-vindo ao Sistema de Mercado</h1>
-            <a href="{{ url_for('produtos.obter_produtos') }}">Gerenciar Produtos</a>
-            <a href="{{ url_for('clientes.obter_clientes') }}">Gerenciar Clientes</a>
-            <a href="{{ url_for('pedidos.get_pedidos_html') }}">Gerenciar Pedidos</a>
-        </div>
+        
+        <a href="{{ url_for('produtos.obter_produtos') }}" class="btn-primary">Gerenciar Produtos</a>
+        <a href="{{ url_for('clientes.obter_clientes') }}" class="btn-primary">Gerenciar Clientes</a>
+        <a href="{{ url_for('pedidos.get_pedidos_html') }}" class="btn-primary">Gerenciar Pedidos</a>
     </div>
+
     <footer>
-        <p>&copy; 2025 Sistema de Mercado. Todos os direitos reservados.</p>
+        <p>&copy; 2025 MERCADO ONCLICK. Todos os direitos reservados.</p>
     </footer>
 </body>
 </html>
