@@ -10,7 +10,9 @@
 body {
     font-family: 'Inter', sans-serif;
     color: hsl(var(--foreground));
-    background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2));
+    background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2)),
+                url("/static/images/background_market.jpg") no-repeat center center;
+    background-size: cover;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -19,12 +21,16 @@ body {
     padding: 2rem;
 }
 
-header {
-    text-align: center;
-    padding: 1rem;
-    background: white;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+.container {
+    max-width: 600px;
     width: 100%;
+    background: hsl(var(--secondary) / 0.2); /* Quase transparente */
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px); /* Mais efeito de vidro */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Adiciona um leve contorno para contraste */
 }
 
 .text-primary {
@@ -32,15 +38,13 @@ header {
     font-weight: 700;
 }
 
-.container {
-    max-width: 600px;
-    width: 100%;
-    background: white;
-    padding: 2rem;
-    border-radius: var(--radius);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s ease;
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
 }
+
 
 .container h2 {
     font-size: 1.5rem;
@@ -51,7 +55,7 @@ header {
 
 .product-table {
     width: 100%; /* Garante que a tabela ocupe todo o espaço disponível */
-    border-collapse: collapse; /* Junta as bordas da tabela */
+    border-collapse: separate; /* Junta as bordas da tabela */
 }
 
 .product-table th,
@@ -61,8 +65,11 @@ header {
 }
 
 .product-table th {
-    background-color: #f1f1f1; /* Dá um destaque ao cabeçalho */
-    border-radius: 8px; /
+    background-color: hsl(var(--primary) / 0.1); /* Azul mais claro */
+    color: hsl(var(--primary-foreground)); /* Contraste para melhor leitura */
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
 }
 
 
