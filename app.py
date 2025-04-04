@@ -1,9 +1,10 @@
 import os
 from config import app, db
-from flask import render_template
+from flask import Flask, render_template
 from Produtos.produtos_routes import produtos_blueprint
 from Clientes.clientes_routes import clientes_blueprint
 from Pedidos.pedidos_routes import pedidos_blueprint
+
 
 # Registrar os blueprints
 app.register_blueprint(produtos_blueprint)

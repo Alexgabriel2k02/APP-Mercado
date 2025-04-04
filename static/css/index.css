@@ -1,0 +1,94 @@
+
+@import url('variables.css');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: hsl(var(--foreground));
+    background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    padding: 1rem;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    width: 100%;
+}
+
+.text-primary {
+    color: hsl(var(--primary));
+    font-weight: 700;
+}
+
+.container {
+    max-width: 600px;
+    width: 100%;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: hsl(var(--foreground));
+    margin-bottom: 0.5rem;
+}
+
+input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border: 2px solid hsl(var(--border));
+    border-radius: var(--radius);
+    background-color: hsl(var(--muted));
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 5px hsla(var(--primary) / 0.3);
+}
+
+.btn-primary {
+    display: inline-block;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    border-radius: var(--radius);
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    width: 100%;
+    cursor: pointer;
+    border: none;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: hsla(var(--primary) / 0.9);
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: hsl(var(--muted-foreground));
+}

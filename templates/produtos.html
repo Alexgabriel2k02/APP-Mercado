@@ -1,134 +1,56 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Produtos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --background: 0 0% 100%;
-            --foreground: 240 10% 3.9%;
-            --primary: 210 100% 50%;
-            --primary-foreground: 0 0% 98%;
-            --secondary: 240 4.8% 95.9%;
-            --secondary-foreground: 240 5.9% 10%;
-            --muted: 240 4.8% 95.9%;
-            --muted-foreground: 240 3.8% 46.1%;
-            --border: 240 5.9% 90%;
-            --radius: 12px;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: hsl(var(--foreground));
-            background: linear-gradient(to bottom right, white, hsl(var(--secondary) / 0.2));
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        header {
-            text-align: center;
-            padding: 1rem;
-            background: white;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            width: 100%;
-        }
-
-        .text-primary {
-            color: hsl(var(--primary));
-            font-weight: 700;
-        }
-
-        .container {
-            max-width: 600px;
-            width: 100%;
-            background: white;
-            padding: 2rem;
-            border-radius: var(--radius);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .products-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .product-item {
-            padding: 1rem;
-            border-radius: var(--radius);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-        }
-
-        .product-item:hover {
-            transform: scale(1.02);
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-primary {
-            display: inline-block;
-            text-align: center;
-            padding: 0.75rem 1.5rem;
-            background-color: hsl(var(--primary));
-            color: hsl(var(--primary-foreground));
-            border-radius: var(--radius);
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.2s;
-        }
-
-        .btn-primary:hover {
-            background-color: hsla(var(--primary) / 0.9);
-        }
-
-        footer {
-            text-align: center;
-            padding: 1rem;
-            font-size: 0.875rem;
-            color: hsl(var(--muted-foreground));
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/produtos.css') }}">
+    <link rel="stylesheet" href = "../static/css/produtos.css">
 </head>
+
 <body>
     <header>
         <h1><span class="text-primary">MERCADO</span> ONCLICK</h1>
     </header>
-    
+
     <main class="container">
-        <section id="product-list">
+        <section id="product-dashboard">
             <div class="section-header">
                 <h2>Lista de Produtos</h2>
             </div>
-            
-            <ul class="products-list">
-                {% for produto in produtos %}
-                    <li class="product-item">
-                        <a href="{{ url_for('produtos.exibir_detalhes_produto', id_produto=produto.id) }}" class="product-name">{{ produto.nome }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-            
-            <a class="btn-primary" href="{{ url_for('produtos.exibir_formulario_criar_produto') }}">Criar Novo Produto</a>
+
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Preço</th>
+                        <th>Estoque</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                        <tr>
+                            <td class="produto-nome" title="{{ produto.nome }}">
+                                <a href="{{ url_for('produtos.exibir_detalhes_produto', id_produto=produto.id) }}">
+                                    {{ produto.nome }}
+                                </a>
+                            </td>
+                            <td>R$ {{ produto.preco }}</td>
+                            <td>{{ produto.estoque }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <a class="btn-primary" href="{{ url_for('produtos.exibir_formulario_criar_produto') }}">Cadastrar Novo Produto</a>
         </section>
     </main>
-    
+
     <footer>
         <p>&copy; <span id="current-year"></span> MERCADO ONCLICK</p>
     </footer>
 </body>
+
 </html>
