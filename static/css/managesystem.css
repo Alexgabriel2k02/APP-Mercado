@@ -1,3 +1,4 @@
+
 @import url('variables.css');
 
 * {
@@ -20,6 +21,12 @@ body {
     padding: 2rem;
 }
 
+h1{
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1rem;
+}
 
 .text-primary {
     color: hsl(var(--primary));
@@ -38,20 +45,6 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.2); /* Adiciona um leve contorno para contraste */
 }
 
-h1{
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-
-.container h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 1.5rem;
-}   
 
 label {
     display: block;
@@ -61,23 +54,7 @@ label {
     margin-bottom: 0.5rem;
 }
 
-input {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 0.9rem;
-    border: 2px solid hsl(var(--border));
-    border-radius: var(--radius);
-    background-color: hsl(var(--muted));
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-input:focus {
-    outline: none;
-    border-color: hsl(var(--primary));
-    box-shadow: 0 0 5px hsla(var(--primary) / 0.3);
-}
-
-.btn-primary {
+.btn-group {
     display: inline-block;
     text-align: center;
     padding: 0.75rem 1.5rem;
@@ -86,20 +63,18 @@ input:focus {
     border-radius: var(--radius);
     text-decoration: none;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.3s ease-in-out;
     width: 100%;
     cursor: pointer;
     border: none;
     margin-top: 1rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-primary:hover {
+.btn-group:hover {
     background-color: hsla(var(--primary) / 0.9);
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
-
 footer {
     text-align: center;
     padding: 1rem;

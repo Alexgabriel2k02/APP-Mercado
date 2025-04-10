@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Vendedor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register_seller.css') }}">
+</head>
+<body>
+    <header>
+        <h1><span class="text-primary">MERCADO</span> ONCLICK</h1>
+    </header>
+
+    <main class="container">
+        <h2>Registrar Novo Vendedor</h2>
+        <form action="{{ url_for('register_routes.registrar_vendedor') }}" method="POST">
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" maxlength="18" oninput="mascaraCNPJ(this)" required>
+
+            <label for="phone">Telefone:</label>
+            <input type="text" id="phone" name="phone">
+
+            <button type="submit" class="btn-primary">Registrar</button>
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> MERCADO ONCLICK</p>
+    </footer>
+
+    <script>
+        // Atualiza o ano atual no rodapé
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Função para aplicar a máscara de CNPJ
+        function mascaraCNPJ(campo) {
+            let cnpj = campo.value.replace(/\D/g, ""); // Remove caracteres não numéricos
+            cnpj = cnpj.replace(/^(\d{2})(\d)/, "$1.$2"); // Adiciona o primeiro ponto
+            cnpj = cnpj.replace(/^(\d{2})\.(\d{3})(\d)/, "$1.$2.$3"); // Adiciona o segundo ponto
+            cnpj = cnpj.replace(/\.(\d{3})(\d)/, ".$1/$2"); // Adiciona a barra
+            cnpj = cnpj.replace(/(\d{4})(\d)/, "$1-$2"); // Adiciona o traço
+            campo.value = cnpj; // Atualiza o valor do campo
+        }
+    </script>
+</body>
+</html>

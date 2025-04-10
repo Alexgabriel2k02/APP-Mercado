@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MERCADO ONCLICK</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/managesystem.css') }}">
+    <link rel="stylesheet" href = "../static/css/managesystem.css">
 </head>
 <body>
     <header>
@@ -13,8 +14,9 @@
     </header>
 
     <div class="container">
-        <a href="{{ url_for('register_routes.registrar_vendedor') }}" class="btn-group">Registrar Vendedor</a>
-        <a href="{{ url_for('login_routes.login') }}" class="btn-group">Login</a>
+        <a href="{{ url_for('produtos.obter_produtos') }}" class="btn-group">Gerenciar Produtos</a>
+        <a href="{{ url_for('clientes.obter_clientes') }}" class="btn-group">Gerenciar Clientes</a>
+        <a href="{{ url_for('pedidos.get_pedidos_html') }}" class="btn-group">Gerenciar Pedidos</a>
     </div>
 
     <footer>
